@@ -1,0 +1,17 @@
+.textArea {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary-200);
+
+  resize: none;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.textArea:focus-visible {
+  outline: 0;
+}

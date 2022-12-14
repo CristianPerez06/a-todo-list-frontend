@@ -1,0 +1,13 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🏗️👷 Validating code styling and formatting before committing.'
+
+# Check Prettier formatting
+npm run prettier-check || (npm run git-reset-changes && (echo '🤢 Prettier Check Failed. 🤢'; false;))
+
+# Check ESLint styling
+npm run lint-check || (npm run git-reset-changes && (echo '🤢 ESLint Check Failed. 🤢'; false;))
+
+# Everything OK
+echo '✅ Committing your changes. ✅'

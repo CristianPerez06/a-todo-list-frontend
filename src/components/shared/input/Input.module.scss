@@ -1,0 +1,27 @@
+.input {
+  height: 36px;
+  width: 100%;
+  max-width: 320px;
+  border: none;
+  border-radius: 40px;
+  padding: 0 15px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary-400);
+
+  @media (min-width: 480px) {
+    max-width: 480px;
+  }
+}
+
+.input:focus-visible {
+  outline: 0;
+}
+
+.input:read-only {
+  cursor: default;
+}

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+/* You can add global styles to this file, and also import other style files */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+:root {
+  --primary-100: #eef1ff;
+  --primary-200: #d2daff;
+  --primary-300: #aac4ff;
+  --primary-400: #b1b2ff;
+  --primary-500: #c147e9;
+
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --success: #28a745;
+  --info: #17a2b8;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lightgray;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: lightgray;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: lightgray;
+}

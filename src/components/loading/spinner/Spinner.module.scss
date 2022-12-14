@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  --offset: 187px;
+  --duration: 1.4s;
+}
+
+.spinner {
+  animation: rotator var(--duration) linear infinite;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: var(--offset);
+  stroke-dashoffset: 0;
+  transform-origin: center;
+
+  animation: dash var(--duration) ease-in-out infinite, useColors calc(var(--duration) * 4) ease-in-out infinite;
+}
+
+@keyframes useColors {
+  0% {
+    stroke: var(--primary-400);
+  }
+  25% {
+    stroke: var(--primary-300);
+  }
+  50% {
+    stroke: var(--primary-200);
+  }
+  75% {
+    stroke: var(--primary-300);
+  }
+  100% {
+    stroke: var(--primary-400);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: var(--offset);
+  }
+  50% {
+    stroke-dashoffset: calc(var(--offset) / 4);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: var(--offset);
+    transform: rotate(450deg);
+  }
+}

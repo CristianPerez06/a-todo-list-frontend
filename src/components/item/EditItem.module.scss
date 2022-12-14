@@ -1,0 +1,87 @@
+.container {
+  background-color: var(--primary-200);
+  border-radius: 15px;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 13fr 1fr;
+  padding: 10px;
+}
+
+.text {
+  padding: 0 5px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.edit {
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.buttonEdit {
+  margin-bottom: 5px;
+
+  &:hover {
+    svg {
+      color: var(--primary-500);
+    }
+  }
+}
+
+.buttonDelete {
+  margin-top: 5px;
+
+  &:hover {
+    svg {
+      color: var(--danger);
+    }
+  }
+}
+
+.buttonIcon {
+  padding: 0 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.spacing {
+  margin: 5px 0;
+}
+
+.editButtonsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.editButtonSave {
+  &:hover {
+    svg {
+      color: var(--success);
+    }
+  }
+}
+
+.editButtonCancel {
+  &:hover {
+    svg {
+      color: var(--primary-500);
+    }
+  }
+}
+
+.editButtonIcon {
+  padding: 0 5px;
+  height: 40px;
+  width: 40px;
+}
