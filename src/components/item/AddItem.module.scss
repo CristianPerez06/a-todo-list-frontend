@@ -1,0 +1,40 @@
+.container {
+  background-color: var(--primary-300);
+  border-radius: 15px;
+}
+
+.add {
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+}
+
+.addContent {
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.buttonIcon {
+  padding: 0 5px;
+  height: 40px;
+  width: 40px;
+}
+
+.buttonAdd {
+  &:hover {
+    svg {
+      color: var(--success);
+    }
+  }
+}
+
+.textArea {
+  color: var(--primary-300);
+}

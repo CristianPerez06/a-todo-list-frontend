@@ -1,0 +1,28 @@
+.container {
+  padding: 10px 0;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonIcon {
+  padding: 0 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.buttonFilter {
+  &:hover {
+    svg {
+      color: var(--primary-500);
+    }
+  }
+  &:hover:disabled {
+    svg {
+      color: unset;
+    }
+  }
+}
