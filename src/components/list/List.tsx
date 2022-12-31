@@ -15,6 +15,7 @@ import EditItem from '../item/EditItem'
 import Loading from '../loading/Loading'
 
 import styles from './List.module.scss'
+import { prepareTasksLists } from './utilities'
 
 export interface ListProps {
   items: Task[]
@@ -34,17 +35,12 @@ const List: Comp = (props) => {
       if (!result.destination) return
 
       dispatch({ type: ACTION_TYPES.LOADING })
-      const tasksList = Array.from(tasks)
-      const [reorderedItem] = tasksList.splice(result.source.index, 1)
-      tasksList.splice(result.destination.index, 0, reorderedItem)
 
-      const orderedItems = tasksList.map((item, index) => {
-        return {
-          id: item.id,
-          text: item.text,
-          position: tasksList.length - index,
-        }
-      })
+      const reorderedTasksList = Array.from(tasks)
+      const [reorderedItem] = reorderedTasksList.splice(result.source.index, 1)
+      reorderedTasksList.splice(result.destination.index, 0, reorderedItem)
+
+      const { tasksForUI, tasksForDB } = prepareTasksLists(tasks, reorderedTasksList)
 
       fetch(`${process.env.REACT_APP_API_URL}/updateTasks`, {
         method: 'PUT',
@@ -52,13 +48,13 @@ const List: Comp = (props) => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ list: orderedItems }),
+        body: JSON.stringify({ list: tasksForDB }),
       })
         .then((res) => res.json())
         .then(() => {
           dispatch({
             type: ACTION_TYPES.REFRESH_TASKS,
-            tasksList: orderedItems,
+            tasksList: tasksForUI,
           })
           dispatch({ type: ACTION_TYPES.NOT_LOADING })
         })
@@ -103,9 +99,8 @@ const List: Comp = (props) => {
       },
       body: JSON.stringify({ id: task.id }),
     })
-      .then((res) => res.json())
-      .then((deletedTask) => {
-        dispatch({ type: ACTION_TYPES.DELETE_TASK, task: deletedTask })
+      .then(() => {
+        dispatch({ type: ACTION_TYPES.DELETE_TASK, task: { id: task.id, text: '' } })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
       })
       .catch(() => {
@@ -126,7 +121,7 @@ const List: Comp = (props) => {
             <ul className={styles['listContainer']} {...provided.droppableProps} ref={provided.innerRef}>
               {tasks.map((task, index) => {
                 return (
-                  <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+                  <Draggable key={task.id} draggableId={(task.id as number).toString()} index={index}>
                     {(provided: DraggableProvided) => (
                       <li
                         ref={provided.innerRef}

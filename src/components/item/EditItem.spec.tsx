@@ -1,14 +1,15 @@
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { Task } from '../../types/types'
 
 import EditItem from './EditItem'
 
 const ITEM_TEXT = 'a text'
-const ITEM = {
+const ITEM: Task = {
   id: 1,
   text: ITEM_TEXT,
-  position: 1,
+  previous: 1,
 }
 
 describe('When component IS NOT IN EDIT MODE', () => {

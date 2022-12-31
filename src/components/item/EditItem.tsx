@@ -84,7 +84,7 @@ const EditItem: Comp = (props) => {
                   handleSaveClick({
                     id: item.id,
                     text: updatedText,
-                    position: item.position,
+                    previous: item.previous,
                   })
                 }}
                 isDisabled={updatedText === item.text || !updatedText}

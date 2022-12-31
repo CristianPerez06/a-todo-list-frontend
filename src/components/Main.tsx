@@ -32,8 +32,6 @@ const Main: Comp = () => {
     })
       .then((res) => res.json())
       .then((insertedTask) => {
-        // eslint-disable-next-line no-debugger
-        debugger
         dispatch({ type: ACTION_TYPES.ADD_TASK, task: insertedTask })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
       })

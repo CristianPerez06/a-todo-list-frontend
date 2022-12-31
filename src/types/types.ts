@@ -1,5 +1,8 @@
 export type Task = {
-  id: number
+  // Task identified
+  id?: number
+  // Task description
   text: string
-  position: number
+  // Task identified of previous task (used for linked list)
+  previous?: number
 }
