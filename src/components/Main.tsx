@@ -31,8 +31,11 @@ const Main: Comp = () => {
       body: JSON.stringify(newTask),
     })
       .then((res) => res.json())
-      .then((insertedTask) => {
-        dispatch({ type: ACTION_TYPES.ADD_TASK, task: insertedTask })
+      .then((res) => {
+        if (res.error) {
+          throw new Error()
+        }
+        dispatch({ type: ACTION_TYPES.ADD_TASK, task: res })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
       })
       .catch(() => {
@@ -53,8 +56,11 @@ const Main: Comp = () => {
 
     fetch(`${process.env.REACT_APP_API_URL}/getTasks`)
       .then((res) => res.json())
-      .then((list) => {
-        dispatch({ type: ACTION_TYPES.REFRESH_TASKS, tasksList: list })
+      .then((res) => {
+        if (res.error) {
+          throw new Error()
+        }
+        dispatch({ type: ACTION_TYPES.REFRESH_TASKS, tasksList: res })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
       })
       .catch(() => {

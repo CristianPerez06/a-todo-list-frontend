@@ -51,7 +51,10 @@ const List: Comp = (props) => {
         body: JSON.stringify({ list: tasksForDB }),
       })
         .then((res) => res.json())
-        .then(() => {
+        .then((res) => {
+          if (res.error) {
+            throw new Error()
+          }
           dispatch({
             type: ACTION_TYPES.REFRESH_TASKS,
             tasksList: tasksForUI,
@@ -78,8 +81,11 @@ const List: Comp = (props) => {
       body: JSON.stringify(task),
     })
       .then((res) => res.json())
-      .then((updatedTask) => {
-        dispatch({ type: ACTION_TYPES.UPDATE_TASK, task: updatedTask })
+      .then((res) => {
+        if (res.error) {
+          throw new Error()
+        }
+        dispatch({ type: ACTION_TYPES.UPDATE_TASK, task: res })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
       })
       .catch(() => {
@@ -99,7 +105,11 @@ const List: Comp = (props) => {
       },
       body: JSON.stringify({ id: task.id }),
     })
-      .then(() => {
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.error) {
+          throw new Error()
+        }
         dispatch({ type: ACTION_TYPES.DELETE_TASK, task: { id: task.id, text: '' } })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
       })
