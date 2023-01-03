@@ -1,15 +1,15 @@
 import { addTask, updateTask, deleteTask } from './reducerUtils'
 import { Task } from '../types/types'
 
-const ITEM = {
+const ITEM: Task = {
   id: 2,
   text: 'different item',
-  position: 2,
+  previous: 2,
 }
 
 const LIST: Task[] = [
-  { id: 1, text: '1st item', position: 1 },
-  { id: 3, text: '3rd item', position: 3 },
+  { id: 1, text: '1st item', previous: 1 },
+  { id: 3, text: '3rd item', previous: 3 },
 ]
 
 describe('When TASK is ADDED', () => {
@@ -26,7 +26,7 @@ describe('When TASK is UPDATED', () => {
     const updatedItem = {
       id: ITEM.id,
       text: 'updated text',
-      position: ITEM.position,
+      previous: ITEM.previous,
     }
 
     const res = updateTask(updatedItem, [...LIST, ITEM])

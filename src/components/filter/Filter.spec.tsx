@@ -6,13 +6,13 @@ import { Task } from '../../types/types'
 
 import Filter from './Filter'
 
-const ITEM = {
+const ITEM: Task = {
   id: 2,
   text: 'different item',
-  position: 2,
+  previous: 2,
 }
 
-const LIST: Task[] = [{ id: 1, text: '1st item', position: 1 }, ITEM, { id: 3, text: '3rd item', position: 3 }]
+const LIST: Task[] = [{ id: 1, text: '1st item', previous: 1 }, ITEM, { id: 3, text: '3rd item', previous: 3 }]
 
 describe('When component IS DISPLAYED', () => {
   it('should SHOW an INPUT and a CLEAR BUTTON', () => {

@@ -66,11 +66,7 @@ describe('When component IS DISPLAYED', () => {
         await fireEvent.click(button)
 
         expect(mockedFn).toHaveBeenCalledTimes(1)
-        expect(mockedFn).toHaveBeenCalledWith({
-          id: 0,
-          text: NEW_TEXT,
-          position: LIST.length + 1,
-        })
+        expect(mockedFn).toHaveBeenCalledWith({ text: NEW_TEXT })
       })
     })
   })

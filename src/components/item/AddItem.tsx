@@ -22,11 +22,9 @@ const AddItem: Comp = (props) => {
     setNewText(value)
   }
 
-  const handleSaveClick = (text: string, totalCount: number) => {
+  const handleSaveClick = (text: string) => {
     const newTask = {
-      id: 0,
       text: text,
-      position: totalCount + 1,
     }
 
     onSave?.(newTask)
@@ -53,7 +51,7 @@ const AddItem: Comp = (props) => {
             data-testid={'button'}
             content={<PlusCircleIcon className={styles['buttonIcon']} />}
             onClick={() => {
-              handleSaveClick(newText, totalTasksCount)
+              handleSaveClick(newText)
             }}
             isDisabled={!newText || isDisabled}
             className={styles['buttonAdd']}
