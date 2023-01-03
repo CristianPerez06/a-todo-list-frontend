@@ -38,8 +38,7 @@ const Filter: Comp = (props) => {
   }, [])
 
   useEffect(() => {
-    const regex = new RegExp(searchText, 'i')
-    const filteredOptions = list.filter((x) => x.text.match(regex))
+    const filteredOptions = getFilteredItems(searchText, list)
     onFilteredList(filteredOptions)
   }, [searchText, list, onFilteredList])
 
