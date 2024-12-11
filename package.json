@@ -1,5 +1,5 @@
 {
-  "name": "a-clean-react-app",
+  "name": "a-todo-list-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
