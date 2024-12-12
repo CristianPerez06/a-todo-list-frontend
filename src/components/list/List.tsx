@@ -105,9 +105,6 @@ const List: Comp = (props) => {
       },
       body: JSON.stringify({ id: task.id }),
     })
-      .then((res) => {
-        res.json()
-      })
       .then(() => {
         dispatch({ type: ACTION_TYPES.DELETE_TASK, task: { id: task.id, text: '' } })
         dispatch({ type: ACTION_TYPES.NOT_LOADING })
